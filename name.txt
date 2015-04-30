@@ -1,0 +1,2 @@
+#Maintained by: PHPdev32 for: Sourceforge
+into_all all code_regex ("name",\s+)Buffer\s\(0x[0-9A-Fa-f]+\)\s+\{\s+("[^"]+")\s+\} replaceall_matched begin $1$2 end

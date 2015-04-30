@@ -1,0 +1,11 @@
+Replace Names	rename.txt
+Insert DTGP	dtgp.txt
+HD4k GFX	gfx0.txt
+HD4k HDMI	hdmi.txt
+Insert SMBus	sbus.txt
+Insert MCHC	mchc.txt
+Name to String	name.txt
+Remove WMI	wmi.txt
+Generic SSDT	ssdt.txt
+800MHz SSDT	800mhz.txt
+Basic Ivy SSDT	basicivy.txt

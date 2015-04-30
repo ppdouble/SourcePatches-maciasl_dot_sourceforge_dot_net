@@ -1,0 +1,57 @@
+#Maintained by: PHPdev32 for: Sourceforge
+#SSDT:MinFreq 800
+into scope label _PR.CPU0 set_label begin \_PR.CPU0 end;
+into scope label \_PR.CPU0 code_regex (Name\s\(APSN,\s.*\)) replace_matched
+begin
+	    Name (ASPN, 0x08) \n
+        Name (APLF, 0x04) \n
+end;
+into scope label \_PR.CPU0 code_regex . insert
+begin
+Method (DTGP, 5, NotSerialized)\n
+{\n
+    If (LEqual (Arg0, Buffer (0x10)\n
+            {\n
+                /* 0000 */    0xC6, 0xB7, 0xB5, 0xA0, 0x18, 0x13, 0x1C, 0x44, \n
+                /* 0008 */    0xB0, 0xC9, 0xFE, 0x69, 0x5E, 0xAF, 0x94, 0x9B \n
+            }))\n
+    {\n
+        If (LEqual (Arg1, One))\n
+        {\n
+            If (LEqual (Arg2, Zero))\n
+            {\n
+                Store (Buffer (One)\n
+                    {\n
+                        0x03\n
+                    }, Arg4)\n
+                Return (One)\n
+            }\n
+            If (LEqual (Arg2, One))\n
+            {\n
+                Return (One)\n
+            }\n
+        }\n
+    }\n
+    Store (Buffer (One)\n
+        {\n
+            0x00\n
+        }, Arg4)\n
+    Return (Zero)\n
+}\n
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x02)\n
+	{\n
+		"plugin-type", \n
+		One \n
+	}, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+into_all method label APSS insert begin
+        }\n
+        Method (ACST, 0, NotSerialized)\n
+        {\n
+            Return (\_PR.CPU0.ACST ())
+end
