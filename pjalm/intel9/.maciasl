@@ -1,0 +1,6 @@
+Generic Fixes	DSDT	Generic_Fixes.txt
+SATA	DSDT	SATA.txt
+USB Power	DSDT	USB_Power.txt
+LPC	DSDT	LPC.txt
+SMBUS	DSDT	SMBUS.txt
+Add MCHC	DSDT	MCHC.txt
